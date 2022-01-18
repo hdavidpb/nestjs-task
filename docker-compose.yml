@@ -1,10 +1,15 @@
-version: '3.3'
+version: '3.1'
 
 services:
-  database:
-    image: postgres:13
-    enviroment: -POSTGRES_DB=tasks_db
-      -POSTGRES_USER=hdavidpb
-      -POSTGRES_PASSWORD=postgres
-    ports: -'5432:5432'
-    volumes: -./postgres_data:/var/lib/postgresql
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: hdavidpb
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: task_db
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+
+
